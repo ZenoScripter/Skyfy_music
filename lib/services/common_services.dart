@@ -753,13 +753,13 @@ Future<List<Map<String, dynamic>>> getSimilarSongs(
       }
     }
 
-    final related = await ytClient.videos.getRelatedVideos(song) ?? [];
-    collect(related);
+    final related = await ytClient.videos.getRelatedVideos(song);
+    if (related != null) collect(related.whereType<Video>());
 
     // Not enough songs from the artist in the related list: search them.
     if (onlyArtist && result.length < 4) {
       final searchResults = await ytClient.search.search(song.author);
-      collect(searchResults);
+      collect(searchResults.whereType<Video>());
     }
   } catch (e, stackTrace) {
     logger.log(
