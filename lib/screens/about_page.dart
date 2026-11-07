@@ -244,7 +244,6 @@ class _ContactRow extends StatelessWidget {
                     logoAsset!,
                     width: 30,
                     height: 30,
-                    filterQuality: FilterQuality.medium,
                   )
                 else
                   Icon(icon, size: 24, color: colorScheme.onSurface),
